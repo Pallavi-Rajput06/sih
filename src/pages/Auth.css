@@ -1,12 +1,12 @@
 .auth-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffe4e1 0%, #f0f8ff 100%);
+  background: linear-gradient(135deg, #e6e5e6 0%, #f4f2f4 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   padding-top: 90px;
-  width: 100%;
+  width: 100vw;
 }
 
 .auth-card {
@@ -14,7 +14,6 @@
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  width: 100%;
   max-width: 100%;
   position: relative;
   overflow: hidden;
@@ -27,7 +26,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #ffa07a, #ffb6c1);
+  background: linear-gradient(90deg, #eeeded, #f8f7f7);
 }
 
 .register-card {
@@ -40,7 +39,7 @@
 }
 
 .auth-header h2 {
-  color: #8b4513;
+  color: #060606;
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -73,14 +72,14 @@
 }
 
 .form-group label {
-  color: #8b4513;
+  color: #0d0d0d;
   font-weight: 600;
   font-size: 14px;
 }
 
 .form-group input {
   padding: 12px 16px;
-  border: 2px solid #ffe4e1;
+  border: 2px solid #cfcdcd;
   border-radius: 10px;
   font-size: 16px;
   transition: all 0.3s ease;
@@ -90,14 +89,14 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #ffa07a;
+  border-color: #9c9b9b;
   background: white;
-  box-shadow: 0 0 0 3px rgba(255, 160, 122, 0.1);
+  box-shadow: 0 0 0 3px rgba(90, 89, 89, 0.1);
 }
 
 .form-group input.error {
-  border-color: #e74c3c;
-  background: #fdf2f2;
+  border-color: #eb6e61;
+  background: #fbf7f7;
 }
 
 .error-message {
@@ -127,11 +126,11 @@
 .checkbox-container input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #ffa07a;
+  accent-color: #dfdede;
 }
 
 .forgot-link {
-  color: #ffa07a;
+  color: #2481f3;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -139,7 +138,7 @@
 }
 
 .forgot-link:hover {
-  color: #ff8c69;
+  color:#2b7bdc ;
 }
 
 .checkbox-group {
@@ -148,7 +147,7 @@
 }
 
 .terms-link {
-  color: #ffa07a;
+  color: #2481f3;
   text-decoration: none;
   font-weight: 500;
 }
@@ -158,8 +157,8 @@
 }
 
 .auth-submit {
-  background: linear-gradient(135deg, #ffa07a 0%, #ffb6c1 100%);
-  color: white;
+  background: linear-gradient(135deg, #e3e3e3 0%, #f1f0f0 100%);
+  color: black;
   border: none;
   padding: 15px;
   border-radius: 10px;
@@ -173,7 +172,7 @@
 
 .auth-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 160, 122, 0.3);
+  box-shadow: 0 10px 25px rgba(126, 125, 125, 0.3);
 }
 
 .auth-submit:active {
@@ -194,7 +193,7 @@
 }
 
 .auth-link {
-  color: #ffa07a;
+  color: #2481f3;
   text-decoration: none;
   font-weight: 600;
 }

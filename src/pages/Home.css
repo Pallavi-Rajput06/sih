@@ -1,26 +1,29 @@
 .home-container {
   min-height: 100vh;
-  background: #fff5ee;
+  background: #efefef;
   padding-top: 70px;
 }
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(135deg, #ffe4e1 0%, #f0f8ff 100%);
-  color: #8b4513;
+  /* background: linear-gradient(135deg, #ffffffa8 0%, #f8f8f9 100%); */
+  color: black;
+  background-image: url(https://i0.wp.com/taxconcept.net/wp-content/uploads/2025/05/image_editor_output_image-916037483-1748699154850.jpg?fit=780%2C520&ssl=1);
+  background-size: 100%;
   padding: 100px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
-  max-width: 1200px;
+  max-width: 100vw;
   margin: 0 auto;
 }
 
-.hero-content h1 {
+.hero-content #heading {
   font-size: 3.5rem;
   font-weight: 700;
-  margin-bottom: 25px;
+  color: white;
+  margin-left: 60px;
   text-shadow: 0 2px 4px rgba(139, 69, 19, 0.3);
   line-height: 1.2;
 }
@@ -28,13 +31,16 @@
 .hero-content p {
   font-size: 1.3rem;
   opacity: 0.9;
-  margin-bottom: 40px;
+  color: #bdbcbc;
+  
   line-height: 1.6;
 }
 
 .hero-buttons {
   display: flex;
   gap: 20px;
+  margin-top: 20px;
+  margin-left: 60px;
   flex-wrap: wrap;
 }
 
@@ -50,25 +56,28 @@
 }
 
 .cta-button.primary {
-  background: linear-gradient(45deg, #ffa07a, #ffb6c1);
-  color: white;
-  box-shadow: 0 8px 25px rgba(255, 160, 122, 0.3);
+  background: rgba(232, 231, 231, 0.396);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(223, 222, 222, 0.34);
+  color: rgb(0, 0, 0);
+  box-shadow: 0 8px 25px rgba(96, 95, 95, 0.3);
 }
 
 .cta-button.primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 160, 122, 0.4);
+  box-shadow: 0 12px 35px rgba(65, 64, 64, 0.4);
 }
 
 .cta-button.secondary {
-  background: transparent;
-  color: #8b4513;
-  border: 2px solid rgba(139, 69, 19, 0.3);
+  color: #000000;
+  background: rgba(232, 231, 231, 0.396);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(223, 222, 222, 0.34);
 }
 
 .cta-button.secondary:hover {
-  background: rgba(139, 69, 19, 0.1);
-  border-color: rgba(139, 69, 19, 0.6);
+  background: rgba(138, 137, 136, 0.1);
+  border-color: rgba(84, 84, 84, 0.6);
 }
 
 .cta-button.large {
@@ -79,46 +88,46 @@
 /* Hero Visual */
 .hero-visual {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   position: relative;
 }
 
 .hero-image {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 430px;
+  height: 430px;
 }
 
 .floating-card {
   position: absolute;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(232, 231, 231, 0.396);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(223, 222, 222, 0.34);
   border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  animation: float 6s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
 .floating-card.card-1 {
-  top: 20px;
-  left: 20px;
+  bottom: 1px;
+  left: 10px;
   animation-delay: 0s;
 }
 
 .floating-card.card-2 {
-  top: 150px;
-  right: 20px;
+  bottom: 1px;
+  left: 150px;
   animation-delay: 2s;
 }
 
 .floating-card.card-3 {
-  bottom: 20px;
-  left: 50px;
+  bottom: 1px;
+  left: 300px;
   animation-delay: 4s;
 }
 
@@ -151,7 +160,7 @@
 
 .section-header h2 {
   font-size: 2.8rem;
-  color: #8b4513;
+  color: #000000;
   margin-bottom: 20px;
   font-weight: 700;
 }
@@ -205,7 +214,7 @@
 
 /* Stats Section */
 .stats-section {
-  background: linear-gradient(135deg, #ffa07a 0%, #ffb6c1 100%);
+  background: linear-gradient(135deg, #747373 0%, #bdbcbc 100%);
   padding: 80px 20px;
   color: white;
 }
@@ -240,7 +249,7 @@
 
 /* CTA Section */
 .cta-section {
-  background: #fff5ee;
+  background: #ffffff;
   padding: 80px 20px;
   text-align: center;
 }
@@ -252,7 +261,7 @@
 
 .cta-content h2 {
   font-size: 2.5rem;
-  color: #8b4513;
+  color: #0c0c0c;
   margin-bottom: 20px;
   font-weight: 700;
 }

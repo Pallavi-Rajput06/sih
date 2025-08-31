@@ -7,7 +7,11 @@ const Home = () => {
     <div className="home-container">
       <div className="hero-section">
         <div className="hero-content">
-          <h1>Welcome to eConsultation</h1>
+
+          
+         
+
+          <h1 id='heading'>Welcome to eConsultation</h1>
           <p>Empowering democratic participation through AI-driven consultation analysis</p>
           <div className="hero-buttons">
             <Link to="/register" className="cta-button primary">Get Started</Link>

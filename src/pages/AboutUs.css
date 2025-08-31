@@ -1,13 +1,13 @@
 .about-container {
   min-height: 100vh;
-  background: #fff5ee;
+  background: #ffffff;
   padding-top: 70px;
   width: 100%;
 }
 
 .about-hero {
-  background: linear-gradient(135deg, #ffe4e1 0%, #f0f8ff 100%);
-  color: #8b4513;
+  background: linear-gradient(135deg, #e3e1e1 0%, #f3f5f5 100%);
+  color: #0e0d0d;
   padding: 80px 20px;
   text-align: center;
   width: 100%;
@@ -16,8 +16,9 @@
 .hero-content h1 {
   font-size: 3rem;
   font-weight: 700;
+  color: black;
   margin-bottom: 20px;
-  text-shadow: 0 2px 4px rgba(139, 69, 19, 0.3);
+  text-shadow: 0 2px 4px rgba(91, 90, 90, 0.399);
 }
 
 .hero-content p {
@@ -41,12 +42,13 @@
 
 .section-header {
   text-align: center;
+  
   margin-bottom: 40px;
 }
 
 .section-header h2 {
   font-size: 2.5rem;
-  color: #8b4513;
+  color: #000000;
   margin-bottom: 15px;
   font-weight: 700;
 }
@@ -54,7 +56,7 @@
 .section-line {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #ffa07a, #ffb6c1);
+  background: linear-gradient(90deg, #afafaf, #a8a7a7);
   margin: 0 auto;
   border-radius: 2px;
 }
@@ -96,7 +98,7 @@
 }
 
 .outcome-card h3 {
-  color: #8b4513;
+  color: #000000;
   font-size: 1.5rem;
   margin-bottom: 15px;
   font-weight: 600;
@@ -110,8 +112,9 @@
 }
 
 .outcome-note {
-  background: linear-gradient(135deg, #ffa07a, #ffb6c1);
+  background: linear-gradient(135deg, #ffffff, #ffffff);
   color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 25px;
   border-radius: 15px;
   font-size: 1.1rem;

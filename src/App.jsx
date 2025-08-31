@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AboutUs from './pages/AboutUs';
 import Help from './pages/Help';
+import Draft from './pages/Draft';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/help" element={<Help />} />
+          <Route path='/draft' element={<Draft/>}/>
         </Routes>
       </div>
     </Router>

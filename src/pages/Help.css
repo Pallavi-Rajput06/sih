@@ -1,13 +1,13 @@
 .help-container {
   min-height: 100vh;
-  background: #fff5ee;
+  background: #f6f6f6;
   padding-top: 70px;
   width: 100%;
 }
 
 .help-hero {
-  background: linear-gradient(135deg, #ffe4e1 0%, #f0f8ff 100%);
-  color: #8b4513;
+  background: linear-gradient(135deg, #f3f2f2 0%, #d6d5d5 100%);
+  color: #000000;
   padding: 80px 20px;
   text-align: center;
   width: 100%;
@@ -16,13 +16,15 @@
 .hero-content h1 {
   font-size: 3rem;
   font-weight: 700;
+  color:black;
   margin-bottom: 20px;
-  text-shadow: 0 2px 4px rgba(139, 69, 19, 0.3);
+  text-shadow: 0 2px 4px rgba(121, 61, 19, 0.3);
 }
 
 .hero-content p {
   font-size: 1.2rem;
   opacity: 0.9;
+  color: #555;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -46,7 +48,7 @@
 
 .section-header h2 {
   font-size: 2.5rem;
-  color: #8b4513;
+  color: #000000;
   margin-bottom: 15px;
   font-weight: 700;
 }
@@ -54,7 +56,7 @@
 .section-line {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #ffa07a, #ffb6c1);
+  background: linear-gradient(90deg,  #565656, #a9a8a8);
   margin: 0 auto;
   border-radius: 2px;
 }
@@ -86,16 +88,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff5ee;
+  background: #ffffff;
   transition: background 0.3s ease;
 }
 
 .faq-question:hover {
-  background: #ffe4e1;
+  background: #e6e5e5;
 }
 
 .faq-question.active {
-  background: linear-gradient(135deg, #ffa07a, #ffb6c1);
+  background: linear-gradient(135deg, #727272, #9f9f9f);
   color: white;
 }
 
@@ -108,7 +110,7 @@
 .faq-toggle {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ffa07a;
+  color: #7e7d7d;
   transition: all 0.3s ease;
 }
 
@@ -156,7 +158,7 @@
 }
 
 .contact-card h3 {
-  color: #8b4513;
+  color: #000000;
   font-size: 1.3rem;
   margin-bottom: 20px;
   font-weight: 600;
@@ -208,7 +210,7 @@
 }
 
 .link-card h3 {
-  color: #8b4513;
+  color: #000000;
   font-size: 1.2rem;
   margin-bottom: 10px;
   font-weight: 600;
@@ -222,7 +224,7 @@
 }
 
 .link-button {
-  background: linear-gradient(135deg, #ffa07a, #ffb6c1);
+  background: linear-gradient(135deg, #afadad, #d3d3d3);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -235,7 +237,7 @@
 
 .link-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 160, 122, 0.3);
+  box-shadow: 0 5px 15px rgba(96, 95, 95, 0.3);
 }
 
 /* Support Form */
@@ -258,7 +260,7 @@
 }
 
 .support-button {
-  background: linear-gradient(135deg, #ffa07a, #ffb6c1);
+  background: linear-gradient(135deg, #7c7b7b, #c0bebe);
   color: white;
   border: none;
   padding: 15px 30px;
@@ -271,7 +273,7 @@
 
 .support-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 160, 122, 0.3);
+  box-shadow: 0 10px 25px rgba(93, 93, 92, 0.3);
 }
 
 /* Responsive Design */
