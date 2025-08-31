@@ -12,7 +12,7 @@ const Home = () => {
          
 
           <h1 id='heading'>Welcome to eConsultation</h1>
-          <p>Empowering democratic participation through AI-driven consultation analysis</p>
+          <p id='mainpara'>Empowering democratic participation <br />through AI-driven consultation analysis</p>
           <div className="hero-buttons">
             <Link to="/register" className="cta-button primary">Get Started</Link>
             <Link to="/about" className="cta-button secondary">Learn More</Link>

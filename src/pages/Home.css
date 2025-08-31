@@ -19,6 +19,7 @@
   margin: 0 auto;
 }
 
+
 .hero-content #heading {
   font-size: 3.5rem;
   font-weight: 700;
@@ -28,11 +29,10 @@
   line-height: 1.2;
 }
 
-.hero-content p {
+.hero-content #mainpara {
   font-size: 1.3rem;
-  opacity: 0.9;
-  color: #bdbcbc;
-  
+  opacity: 0.9; 
+  color: rgb(199, 199, 199);
   line-height: 1.6;
 }
 
@@ -88,15 +88,19 @@
 /* Hero Visual */
 .hero-visual {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
+  justify-content: center;
+  align-items: center;
   position: relative;
+  height: 100%;
+  
+  /* background-color: rgb(160, 233, 123); */
 }
 
 .hero-image {
   position: relative;
   width: 430px;
-  height: 430px;
+  margin-top: 60px;
+  height: 420px;
 }
 
 .floating-card {
