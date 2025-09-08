@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './Report.css';
 import {
   ResponsiveContainer,
@@ -36,7 +36,7 @@ function getWordCount(text) {
   return tokenize(text).length;
 }
 
-function summarizeText(comments, minWords = 100, maxWords = 150) {
+function summarizeText(comments, minWords = 230, maxWords = 270) {
   const combined = comments.map(c => c.text).join(' ');
   const words = tokenize(combined);
   if (words.length <= maxWords) {
@@ -98,31 +98,51 @@ function computeLengthBuckets(comments) {
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f7f', '#8dd1e1', '#a4de6c', '#d0ed57', '#83a6ed'];
 
 export default function Report() {
-  const [comments, setComments] = useState([
-    { id: 1, text: 'The dashboard loads quickly and the new filters are very helpful.' },
-    { id: 2, text: 'I faced a small bug when exporting the report to PDF, but refreshing fixed it.' },
-    { id: 3, text: 'Could we add dark mode to improve readability at night? Overall, nice work.' },
-    { id: 4, text: 'Charts are informative, but the labels overlap on mobile devices. Please optimize.' },
-  ]);
+  const [comments, setComments] = useState([]);
   const [draft, setDraft] = useState('');
 
   const summary = useMemo(() => summarizeText(comments, 100, 150), [comments]);
   const topWords = useMemo(() => computeWordFrequencies(comments, 8), [comments]);
   const lengthBuckets = useMemo(() => computeLengthBuckets(comments), [comments]);
 
-  function handleAddComment(e) {
-    e.preventDefault();
-    const text = draft.trim();
-    if (!text) return;
-    setComments(prev => [
-      ...prev,
-      { id: Date.now(), text },
-    ]);
-    setDraft('');
-  }
+  // Load comments from localStorage that were added on Draft page
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('draftComments');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          setComments(parsed);
+        }
+      }
+    } catch (_) {
+      // ignore
+    }
+  }, []);
+
+  // Keep in sync if storage changes in another tab or Draft page updates it
+  useEffect(() => {
+    function syncFromStorage() {
+      try {
+        const stored = localStorage.getItem('draftComments');
+        const parsed = stored ? JSON.parse(stored) : [];
+        if (Array.isArray(parsed)) setComments(parsed);
+      } catch (_) {
+        // ignore
+      }
+    }
+    const onFocus = () => syncFromStorage();
+    window.addEventListener('storage', syncFromStorage);
+    window.addEventListener('focus', onFocus);
+    return () => {
+      window.removeEventListener('storage', syncFromStorage);
+      window.removeEventListener('focus', onFocus);
+    };
+  }, []);
 
   function handleClear() {
     setComments([]);
+    try { localStorage.removeItem('draftComments'); } catch (_) { /* ignore */ }
   }
 
   return (
@@ -137,17 +157,6 @@ export default function Report() {
               <button className="btn" onClick={handleClear} disabled={comments.length === 0}>Clear</button>
             </div>
           </header>
-
-          <form className="comment-form" onSubmit={handleAddComment}>
-            <textarea
-              className="comment-input"
-              placeholder="Write a comment..."
-              value={draft}
-              onChange={e => setDraft(e.target.value)}
-              rows={3}
-            />
-            <button className="btn primary" type="submit">Add Comment</button>
-          </form>
 
           <div className="comments-list" role="list">
             {comments.length === 0 ? (
@@ -164,7 +173,7 @@ export default function Report() {
 
         <section className="summary-section">
           <header className="section-header">
-            <h2>Summary (100–150 words)</h2>
+            <h2>Summary</h2>
           </header>
           <p className="summary-text">{summary}</p>
         </section>
@@ -187,12 +196,12 @@ export default function Report() {
           </div>
 
           <div className="chart-card">
-            <h3>Comments by Length</h3>
+            <h3>Sentiment Distribution</h3>
             <div className="chart-wrap">
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie data={lengthBuckets} dataKey="value" nameKey="name" outerRadius={90} label>
-                    {lengthBuckets.map((entry, index) => (
+                  <Pie data={computeSentimentPie(comments)} dataKey="value" nameKey="name" outerRadius={90} label>
+                    {computeSentimentPie(comments).map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
@@ -206,6 +215,34 @@ export default function Report() {
       </div>
     </div>
   );
+}
+
+// Simple lexicon-based sentiment classification
+const POSITIVE_WORDS = new Set(['good','great','excellent','nice','love','like','helpful','quick','fast','improve','improved','improves','clear','effective','enjoy','awesome','amazing','fantastic','well','happy','satisfied','smooth']);
+const NEGATIVE_WORDS = new Set(['bad','poor','slow','bug','issue','error','problem','confusing','hate','dislike','overlap','crash','fail','delay','difficult','hard','worst','terrible','not working','broken']);
+
+function classifySentiment(text) {
+  const t = tokenize(text);
+  let pos = 0; let neg = 0;
+  for (const w of t) {
+    if (POSITIVE_WORDS.has(w)) pos += 1;
+    if (NEGATIVE_WORDS.has(w)) neg += 1;
+  }
+  if (pos > neg) return 'Positive';
+  if (neg > pos) return 'Negative';
+  return 'Neutral';
+}
+
+function computeSentimentPie(comments) {
+  const counts = { Positive: 0, Negative: 0, Neutral: 0 };
+  for (const c of comments) {
+    counts[classifySentiment(c.text)] += 1;
+  }
+  return [
+    { name: 'Positive', value: counts.Positive },
+    { name: 'Negative', value: counts.Negative },
+    { name: 'Neutral', value: counts.Neutral },
+  ];
 }
 
 

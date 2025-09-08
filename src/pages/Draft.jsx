@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Draft.css';
 
 const Draft = () => {
@@ -6,9 +6,11 @@ const Draft = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
+  const [newDraftTitle, setNewDraftTitle] = useState('');
+  const [newDraftIntro, setNewDraftIntro] = useState('');
 
-  // Sample draft data
-  const drafts = [
+  // Draft data (now stateful to allow adding new drafts)
+  const [drafts, setDrafts] = useState([
     {
       id: 1,
       title: "Companies Act 2024 Amendments",
@@ -51,12 +53,36 @@ const Draft = () => {
         ]
       }
     }
-  ];
+  ]);
 
   // Filter drafts based on search term
   const filteredDrafts = drafts.filter(draft =>
     draft.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleAddDraft = (e) => {
+    e.preventDefault();
+    const title = newDraftTitle.trim();
+    const intro = newDraftIntro.trim();
+    if (!title) return;
+    const newDraft = {
+      id: Date.now(),
+      title,
+      userID: "09261468759657256208",
+      content: {
+        introduction: intro || "",
+        sections: [
+          { title: "Section 1", content: "Details to be added." }
+        ]
+      }
+    };
+    const newIndex = drafts.length; // position after append
+    setDrafts([...drafts, newDraft]);
+    setSearchTerm('');
+    setSelectedDraft(newIndex);
+    setNewDraftTitle('');
+    setNewDraftIntro('');
+  };
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -67,10 +93,42 @@ const Draft = () => {
         timestamp: new Date().toLocaleString(),
         userID: "09261468759657256208"
       };
-      setComments([...comments, comment]);
+      setComments(prev => {
+        const next = [...prev, comment];
+        try {
+          localStorage.setItem('draftComments', JSON.stringify(next));
+        } catch (_) {
+          // ignore
+        }
+        return next;
+      });
       setNewComment('');
     }
   };
+
+  // Load existing comments from localStorage on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('draftComments');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          setComments(parsed);
+        }
+      }
+    } catch (_) {
+      // ignore
+    }
+  }, []);
+
+  // Persist comments on change
+  useEffect(() => {
+    try {
+      localStorage.setItem('draftComments', JSON.stringify(comments));
+    } catch (_) {
+      // ignore
+    }
+  }, [comments]);
 
   return (
     <div className="draft-container">
@@ -82,6 +140,31 @@ const Draft = () => {
       <div className="draft-main">
         {/* Sidebar */}
         <div className="draft-sidebar">
+
+
+          {/* Add Draft Form */}
+          <div className="add-draft-card">
+            <h3>ADD DRAFT</h3>
+            <form onSubmit={handleAddDraft}>
+              <input
+                type="text"
+                value={newDraftTitle}
+                onChange={(e) => setNewDraftTitle(e.target.value)}
+                placeholder="Draft title"
+                className="search-input"
+              />
+              <textarea
+                value={newDraftIntro}
+                onChange={(e) => setNewDraftIntro(e.target.value)}
+                placeholder="Introduction (optional)"
+                className="comment-textarea"
+                rows="3"
+              />
+              <button type="submit" className="submit-button">Add</button>
+            </form>
+          </div>
+
+
           <div className="sidebar-header">
             <h2>DRAFTS</h2>
             <div className="search-container">
@@ -94,6 +177,9 @@ const Draft = () => {
               />
             </div>
           </div>
+
+
+
           
           <div className="draft-list">
             {filteredDrafts.map((draft, index) => (

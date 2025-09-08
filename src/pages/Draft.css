@@ -27,7 +27,7 @@
 /* Sidebar */
 .draft-sidebar {
   width: 25%;
-  background-color: #28303d;
+  background-color: #0e0e0f;
   color: #ecf0f1;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
 
 .sidebar-header {
   padding: 20px;
-  border-bottom: 1px solid #34495e;
+  border-bottom: 1px solid #515151;
 }
 
 .sidebar-header h2 {
@@ -54,10 +54,11 @@
 .search-input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #34495e;
+  /* #515151 */
+  border: 1px solid #515151;
   border-radius: 6px;
-  background-color: #34495e;
-  color: #ecf0f1;
+  background-color: #6c6d6d;
+  color: #ffffff;
   font-size: 14px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -68,7 +69,7 @@
 }
 
 .search-input:focus {
-  border-color: #3498db;
+  border-color: #a2a2a2;
 }
 
 /* Draft List */
@@ -82,20 +83,45 @@
   padding: 15px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border-bottom: 1px solid #34495e;
+  border-bottom: 1px solid #515151;
   font-size: 14px;
   line-height: 1.4;
 }
 
 .draft-item:hover {
-  background-color: #34495e;
+  background-color: #212121;
 }
 
 .draft-item.active {
-  background-color: #3a4452;
+  background-color: #373737;
   color: white;
   font-weight: 500;
 }
+
+
+
+.draft-sidebar .add-draft-card{
+  padding: 20px;
+  background-color: rgb(51, 50, 50);
+}
+
+.draft-sidebar .add-draft-card h3{
+  font-size: 18px;
+  /* margin: 5px; */
+  font-weight: 600;
+  color: #bdc3c7;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.draft-sidebar .add-draft-card .search-input{
+  margin-bottom: 10px;
+}
+
+
+
+
+
 
 /* Main Content */
 .draft-content {
@@ -199,6 +225,7 @@
   width: 100%;
   padding: 15px;
   border: 1px solid #ddd;
+
   border-radius: 8px;
   font-size: 14px;
   font-family: inherit;
@@ -209,15 +236,15 @@
 }
 
 .comment-textarea:focus {
-  border-color: #3498db;
+  border-color: #515151;
 }
 
 .comment-textarea::placeholder {
-  color: #95a5a6;
+  color: #a1aeaf;
 }
 
 .submit-button {
-  background-color: #3498db;
+  background-color: #0b13a8;
   color: white;
   border: none;
   padding: 12px 30px;
@@ -231,7 +258,7 @@
 }
 
 .submit-button:hover {
-  background-color: #2980b9;
+  background-color: #2945b7;
 }
 
 .submit-button:active {
